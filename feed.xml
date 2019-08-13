@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jekyll Offline</title>
+    <description>Jekyll Offline allows you to create a copy of a specified Jekyll-based website and rewrites all of the internal links as relative URLs so that the site can be viewed from a local machine without requiring access to the Internet.
+</description>
+    <link>https://dohliam.github.io/jekyll-offline/</link>
+    <atom:link href="https://dohliam.github.io/jekyll-offline/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 12 Aug 2019 18:41:38 -0700</pubDate>
+    <lastBuildDate>Mon, 12 Aug 2019 18:41:38 -0700</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+  </channel>
+</rss>
