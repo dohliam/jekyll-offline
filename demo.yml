@@ -1,0 +1,11 @@
+# Demo configuration for offline jekyll site
+
+:absolute_base: "https://address.of.site.com/"
+:relative_base: "/demo"
+:source_dir: "demo/_site/"
+:out_dir: "demo_offline/"
+
+# boilerplate variables
+:site_title: "Demo Site"
+:site_url: "https://dohliam.github.io/offline-jekyll/"
+:site_logo: ""
