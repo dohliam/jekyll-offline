@@ -57,6 +57,7 @@ There are also some known issues remaining to be resolved:
 
 * Due to [this 7 year-old unresolved bug](https://bugzilla.mozilla.org/show_bug.cgi?id=760436) in Firefox, local fonts will not load on a page unless they are placed in the same directory as the page. This can be quite problematic for sites with multiple pages, however as noted in the linked bug report, these sites should still work fine in other browsers.
   * Note that this also means that Font Awesome and similar icon fonts will not work properly in Firefox. One way to work around this is to extract the icons you need and embed them into each page. This is of course impractical for large fonts.
+  * As suggested in the bug report, it may be possible to resolve this by setting `security.fileuri.strict_origin_policy` to `false` in `about:config`.
 * There is currently an issue with converting sites in different locations than the script itself. While this is being resolved, it is recommended to place the `_site` folder and corresponding YAML configuration file in the same folder as (or a subfolder of) the `jekyll_offline.rb` script itself.
 
 ## Contributing
