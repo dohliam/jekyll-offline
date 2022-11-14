@@ -10,8 +10,8 @@ def relativize(href, path, absolute_base, root_dir)
   # path = actual current location / file path of current page
   # absolute_base = the base url for the site
 
-  href_url = URI.join(URI.encode(absolute_base), URI.encode(href))
-  path_url = URI.join(absolute_base, URI.encode(path))
+  href_url = URI.join(URI::Parser.new.escape(absolute_base), URI::Parser.new.escape(href))
+  path_url = URI.join(absolute_base, URI::Parser.new.escape(path))
   relative_url = path_url.route_to(href_url).to_s
   url_out = test_index(relative_url, href_url, absolute_base, root_dir)
   if href.match(/^#/)
@@ -21,7 +21,7 @@ def relativize(href, path, absolute_base, root_dir)
 end
 
 def path_is_dir(href_url, absolute_base, root_dir)
-  decode_href = URI.decode(href_url.to_s.gsub(/%25/, "%"))
+  decode_href = URI::Parser.new.unescape(href_url.to_s.gsub(/%25/, "%"))
   local_target = decode_href.gsub(absolute_base, root_dir + "/")
   File.directory?(local_target)
 end
@@ -31,7 +31,7 @@ def test_index(relative_url, href_url, absolute_base, root_dir)
     relative_url = rewrite_index(relative_url)
   else
     fixed_url = relative_url.to_s.gsub(/^\//,"")
-    test_url = URI.join(URI.encode(absolute_base), URI.encode(fixed_url))
+    test_url = URI.join(URI::Parser.new.escape(absolute_base), URI::Parser.new.escape(fixed_url))
     if path_is_dir(test_url, absolute_base, root_dir)
       relative_url = rewrite_index(relative_url)
     end
@@ -56,7 +56,7 @@ def convert_html(html, source_file, root_dir, absolute_base)
     elsif h.match(absolute_base) || !h.match(/https*:\/\//)
       href = href.gsub(/^\/\//, "/")
       raw_out = pre + '="' + relativize(href, path, absolute_base, root_path) + '"'
-      URI.decode(raw_out)
+      URI::Parser.new.unescape(raw_out)
     else
       h
     end
